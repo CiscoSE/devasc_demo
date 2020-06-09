@@ -1,0 +1,620 @@
+{
+	"info": {
+		"_postman_id": "38f3433d-0ae1-4680-b563-5914eba58554",
+		"name": "Chap7 DevAsc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IOS-XE API",
+			"item": [
+				{
+					"name": "Get .well-known",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ios-xe_hostname}}:9443/.well-known/host-meta",
+							"protocol": "https",
+							"host": [
+								"{{ios-xe_hostname}}"
+							],
+							"port": "9443",
+							"path": [
+								".well-known",
+								"host-meta"
+							]
+						},
+						"description": "As part of the RESTCONF standard all hosts must respond with thier root resource when queried with a request against .well-known/host-meta"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Top Level Resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ios-xe_hostname}}:9443/restconf",
+							"protocol": "https",
+							"host": [
+								"{{ios-xe_hostname}}"
+							],
+							"port": "9443",
+							"path": [
+								"restconf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Running Config",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ios-xe_hostname}}:9443/restconf/data/Cisco-IOS-XE-native:native?content=config",
+							"protocol": "https",
+							"host": [
+								"{{ios-xe_hostname}}"
+							],
+							"port": "9443",
+							"path": [
+								"restconf",
+								"data",
+								"Cisco-IOS-XE-native:native"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": "config"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Supported YANG Modules",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ios-xe_hostname}}:9443/restconf/data/ietf-yang-library:modules-state",
+							"protocol": "https",
+							"host": [
+								"{{ios-xe_hostname}}"
+							],
+							"port": "9443",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-yang-library:modules-state"
+							]
+						},
+						"description": "As part of the RESTCONF standard all hosts must respond with thier root resource when queried with a request against .well-known/host-meta"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Interfaces",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ios-xe_hostname}}:9443/restconf/data/ietf-interfaces:interfaces",
+							"protocol": "https",
+							"host": [
+								"{{ios-xe_hostname}}"
+							],
+							"port": "9443",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces"
+							]
+						},
+						"description": "As part of the RESTCONF standard all hosts must respond with thier root resource when queried with a request against .well-known/host-meta"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Interfaces",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/yang-data+json"
+							}
+						],
+						"url": {
+							"raw": "https://{{ios-xe_hostname}}:9443/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet1",
+							"protocol": "https",
+							"host": [
+								"{{ios-xe_hostname}}"
+							],
+							"port": "9443",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces",
+								"interface=GigabitEthernet1"
+							]
+						},
+						"description": "https://tools.ietf.org/html/rfc8343 (page 6 illustrates the tree)"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "{{ios_pass}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{ios_user}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0cbc4cc2-cfb3-48c3-8e94-4d60ce6e123a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "beed953f-b0bc-4dec-94c6-4845a38fbe5b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "NX-OS API",
+			"item": [
+				{
+					"name": "NX-API Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73175f04-191a-44b9-920b-40b0fabb814f",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"nxos_token\", data.imdata[0].aaaLogin.attributes.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"aaaUser\": {\n    \"attributes\": {\n      \"name\": \"{{nxos_user}}\",\n      \"pwd\": \"{{nxos_pass}}\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{nxos_hostname}}/api/aaaLogin.json",
+							"protocol": "https",
+							"host": [
+								"{{nxos_hostname}}"
+							],
+							"path": [
+								"api",
+								"aaaLogin.json"
+							]
+						},
+						"description": "Sends a request to the NX-API and a cookie is returned for subsequent requests. It is interesting that the cookie provided starts with APIC-cookie"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Test VRF",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{nxos_hostname}}/api/node/mo/sys/inst-{{vrf}}.json",
+							"protocol": "https",
+							"host": [
+								"{{nxos_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"sys",
+								"inst-{{vrf}}.json"
+							]
+						},
+						"description": "Queries the NXOS Managed object /sys/inst-{{vrf}}.json if no vrf exists a totalCount of 0 is provided. If the vrf exists it lists the details. \n\nEnvironment Variable vrf is in requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Test VRF",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"l3Inst\": {\n                \"attributes\": {\n                    \"adminState\": \"admin-up\",\n                    \"descr\": \"{{vrf}} nx restapi\",\n                    \"name\": \"{{vrf}}\"\n                }\n            }\n        }"
+						},
+						"url": {
+							"raw": "https://{{nxos_hostname}}/api/node/mo/sys/inst-{{vrf}}.json",
+							"protocol": "https",
+							"host": [
+								"{{nxos_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"sys",
+								"inst-{{vrf}}.json"
+							]
+						},
+						"description": "Creates a VRF instance via NX-OS API. \n\nEnvironment variable vrf used in requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Test VRF",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"l3Inst\": {\n                \"attributes\": {\n                    \"adminState\": \"admin-up\",\n                    \"descr\": \"{{vrf}} nx restapi\",\n                    \"name\": \"{{vrf}}\"\n                }\n            }\n        }"
+						},
+						"url": {
+							"raw": "https://{{nxos_hostname}}/api/node/mo/sys/inst-{{vrf}}.json",
+							"protocol": "https",
+							"host": [
+								"{{nxos_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"sys",
+								"inst-{{vrf}}.json"
+							]
+						},
+						"description": "Deletes a VRF instance via NX-OS API.\n\nEnvironment variable vrf used in requests."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "07532b92-963b-4c70-903b-6b9a4e622c56",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "602f5037-070a-4608-b61b-19a24765b8a9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ACI API",
+			"item": [
+				{
+					"name": "ACI API Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6543422e-e1c4-43c1-8bd4-46c194f49951",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"aaaUser\": {\n    \"attributes\": {\n      \"name\": \"{{aci_user}}\",\n      \"pwd\": \"{{aci_pass}}\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/aaaLogin.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"aaaLogin.json"
+							]
+						},
+						"description": "Sends a request to the NX-API and a cookie is returned for subsequent requests. It is interesting that the cookie provided starts with APIC-cookie"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tenant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/node/class/fvTenant.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"class",
+								"fvTenant.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Tenant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/node/mo/uni/tn-{{tenant}}.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"uni",
+								"tn-{{tenant}}.json"
+							],
+							"query": [
+								{
+									"key": "query-target",
+									"value": "children",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tenant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"fvTenant\": {\n    \"attributes\": {\n        \"descr\": \"Postman Created {{tenant}}\",\n        \"dn\": \"uni/tn-{{tenant}}\",\n        \"name\": \"{{tenant}}\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/node/mo/uni/tn-{{tenant}}.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"uni",
+								"tn-{{tenant}}.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tenant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"fvTenant\": {\n    \"attributes\": {\n        \"dn\": \"uni/tn-{{tenant}}\",\n        \"name\": \"{{tenant}}\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/node/mo/uni/tn-{{tenant}}.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"uni",
+								"tn-{{tenant}}.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get VRF for Tenant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/mo/uni/tn-{{tenant}}/ctx-{{vrf}}.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"mo",
+								"uni",
+								"tn-{{tenant}}",
+								"ctx-{{vrf}}.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create VRF for Tenant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"fvCtx\": {\n                \"attributes\": {\n                    \"descr\": \"Postman Created\",\n                    \"dn\": \"uni/tn-{{tenant}}/ctx-{{vrf}}\",\n                    \"name\": \"{{vrf}}\"\n                }\n            }\n        }"
+						},
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/node/mo/uni/tn-{{tenant}}/ctx-{{vrf}}.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"uni",
+								"tn-{{tenant}}",
+								"ctx-{{vrf}}.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete VRF for Tenant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"fvCtx\": {\n    \"attributes\": {\n        \"descr\": \"Postman Created\",\n        \"dn\": \"uni/tn-{{tenant}}/ctx-{{vrf}}\",\n        \"name\": \"{{vrf}}\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{aci_hostname}}/api/node/mo/uni/tn-{{tenant}}/ctx-{{vrf}}.json",
+							"protocol": "https",
+							"host": [
+								"{{aci_hostname}}"
+							],
+							"path": [
+								"api",
+								"node",
+								"mo",
+								"uni",
+								"tn-{{tenant}}",
+								"ctx-{{vrf}}.json"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4adc05b2-5d2b-4751-8719-d57d2e29d42d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9decb8be-5f72-4fc9-b715-7e76a8576180",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

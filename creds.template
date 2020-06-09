@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Setting Environment Variables for Development"
+export WEBEX_TEAMS_ACCESS_TOKEN='insert bot or personal token'
